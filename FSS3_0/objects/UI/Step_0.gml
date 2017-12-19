@@ -14,42 +14,11 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	ShowDebug(TopButton[i])
 	
 	switch (TopButton[i]) {
-				#region 保存
-		    case "保存":
-			
-			
-	      var file;
-		file = "Var.map"//get_save_filename("地图|*.map", "");
-		if file != ""
-		 {
-			 MapInfo[?"修改日期"] = date_current_datetime()
-		 // screen_save(file);
-		 ini_open(file)
-		 key = ds_map_find_first(MapInfo)
-		 for (var i = 0; i < ds_map_size(MapInfo); ++i) {
-		   show_debug_message(key)
-		   var Info = ds_map_find_value(MapInfo,key)
-		   ini_write_string("引索",i,key)
-		      if is_real(Info){
-		   ini_write_real("信息",key,Info)
-		   ini_write_real("变量种类",string(key),0)
-		   }		   
-		   if is_string(Info){
-		   ini_write_string("信息",key,Info)
-		     ini_write_real("变量种类",string(key),1)
-		   }	   
-		   key = ds_map_find_next(MapInfo,key)
-			}
-		 
-		 
-		 ini_write_real("引索","变量数量",ds_map_size(MapInfo))
-		 ini_write_real("验证用","版本号",3.01)
-		 
-		 
-		 
-		 ini_close()
-		// file_copy("Varmap.map",file)
-		 }
+	#region 保存
+		    case "保存":		
+	ini_open("临时保存.map")
+	scrSaveMap()
+	ini_close()
 	        break;
 		#endregion
 	#region 导出
@@ -60,31 +29,9 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 		file = get_save_filename("地图|*.map", "");
 		if file != ""
 		 {
-			 MapInfo[?"修改日期"] = date_current_datetime()
-		 // screen_save(file);
-		 ini_open("Varmap.map")
-		 key = ds_map_find_first(MapInfo)
-		 for (var i = 0; i < ds_map_size(MapInfo); ++i) {
-		   show_debug_message(key)
-		   var Info = ds_map_find_value(MapInfo,key)
-		   ini_write_string("引索",i,key)
-		      if is_real(Info){
-		   ini_write_real("信息",key,Info)
-		   ini_write_real("变量种类",string(key),0)
-		   }		   
-		   if is_string(Info){
-		   ini_write_string("信息",key,Info)
-		     ini_write_real("变量种类",string(key),1)
-		   }	   
-		   key = ds_map_find_next(MapInfo,key)
-			}
-		 
-		 
-		  ini_write_real("引索","变量数量",ds_map_size(MapInfo))
-		 ini_write_real("验证用","版本号",3.01)
-		 
-		 
-		 ini_close()
+		ini_open(file)
+		scrSaveMap()
+		ini_close()
 		 file_copy("Varmap.map",file)
 		 }
 	        break;
@@ -95,38 +42,10 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 		file = get_open_filename("地图|*.map", "");
 		if file != ""
 		 {
-			 ini_open(file)
-			var  T = ini_read_real("验证用","版本号",0)
-			if T = 3.01
-			{
-				
-			var  size = ini_read_real("引索","变量数量",0)
-			for (var i = 0; i < size; ++i) {
-			var key =   ini_read_string("引索",i,"")
-			if key != ""
-			{
-				var Var = ini_read_real("变量种类",key,noone)
-				if Var!= noone{
-					
-					if Var = 0
-					{
-					Var = ini_read_real("信息",key,noone)
-					}
-					if Var = 1
-					{
-					Var =  ini_read_string("信息",key,"")
-					}
-					
-				ds_map_replace(MapInfo,key,Var)
-				}
-			}
-			}
 
-			
-			}
-			 ini_close()
-		
-			 
+	ini_open(file)
+	scrLoadMap()
+	ini_close()
 		 }
 	
 	break;
@@ -140,7 +59,7 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	#endregion
 	#region 删除
 case "删除":
-file_delete("Var.map")
+file_delete("临时保存.map")
 game_restart()
 break;
 #endregion
@@ -164,6 +83,7 @@ break;
 	#endregion
 	#region 上传
 	case "上传":
+	if global.steam_api 
 	if  !Publish_ID
 {
 	var app_id = steam_get_app_id();
@@ -188,6 +108,8 @@ case "修改封面":
 		}
 break;
 	#endregion
+	
+	
 	    default:
 	        // code here
 	        break;
@@ -211,9 +133,14 @@ for (var i = 0; i < array_length_1d(PenSelectButton); ++i) {
 	{
 		
 	ShowDebug(PenSelectButton[i])
+
+ 
+	
 	
 	if PenSelectButton[i] != PenSelect{
 		PenSelect = PenSelectButton[i]	
+
+		
 	#region 刷新按钮列表信息
 	PenButton = 0
 var Str = PenSelect
@@ -237,9 +164,16 @@ PenButtonX = 128//1280-PenButtonWidth//-PenButton_w
 PenButtonY = 128
 PenButtonSuf = -1
 #endregion
+	
+			 #region 切换分类后 选择为第一i个
+		PenName = PenButton[0]//ds_map_find_first(Map)
+		var Map = PenMap[?PenSelect]
+		Map = Map[?PenName]
+		Map = Map[?"精灵"]
+		PenSpr = Map
+		#endregion
 	if surface_exists(PenButtonSuf)
 	  surface_free(PenButtonSuf)
-
 	}
 	}
 }
@@ -261,11 +195,11 @@ for (var i = 0; i < array_length_1d(PenButton); ++i) {
 	{
 		
 	ShowDebug(PenButton[i])
-	Pen = PenButton[i]//ds_map_find_first(Map)
+	PenName = PenButton[i]//ds_map_find_first(Map)
 	var Map = PenMap[?PenSelect]
-	Map = Map[?Pen]
-	Map = Map[?"Spr"]
-	PenSP = Map
+	Map = Map[?PenName]
+	Map = Map[?"精灵"]
+	PenSpr = Map
 
 	}
 }
@@ -329,10 +263,10 @@ var C= collision_point(Objx+16,Objy+16,oObject,0,1)
 			//创建
 			//layer_get_id()
  	var A = instance_create_layer(Objx,Objy,"Obj",oObject)
-//	show_debug_message(A)
-A.SP = PenSP
-A.Arg = PenArg
-A.Name = Pen
+	A.Name = PenName
+	A.sprite_index = PenSpr
+	A.image_angle = PenArg
+	A.image_alpha = PenAlp
 		}
 	}
 	#endregion
@@ -349,7 +283,7 @@ A.Name = Pen
 #endregion
 
 #region 缩放
-	if mouse_wheel_up() and GameCamSize < 1
+	if (mouse_wheel_up() or keyboard_check(vk_pageup) )and GameCamSize < 1
 {
 		GameCamSize+=0.05
 		GameCamSize = min(GameCamSize,GameCameSizeMax )
@@ -365,7 +299,7 @@ A.Name = Pen
 	
 		
 }
-if mouse_wheel_down() and GameCamSize >0.4
+if( mouse_wheel_down() or keyboard_check(vk_pagedown)) and GameCamSize >0.4
 {
 	GameCamSize -=0.05
 	GameCamSize = min(GameCamSize,GameCameSizeMax )
@@ -386,14 +320,14 @@ if mouse_wheel_down() and GameCamSize >0.4
 	#endregion
 #region 拉动窗口
 //记录相对坐标
-if device_mouse_check_button_pressed(0,mb_middle)
+if device_mouse_check_button_pressed(0,mb_middle) or keyboard_check_pressed(vk_alt)
 {
 	GameSufSMx = GameSufMx;
 	GameSViewX = camera_get_view_x(view_camera[0])
 	GameSufSMy = GameSufMy;	
 	GameSViewY =  camera_get_view_y(view_camera[0])
 }
-if device_mouse_check_button(0,mb_middle)
+if device_mouse_check_button(0,mb_middle)  or keyboard_check(vk_alt)
 {	var CX = GameSViewX - (((GameSufMx-GameSufSMx)/GameSufW)*camera_get_view_width(view_camera[0]))
 	CX = min(CX,room_width-camera_get_view_width(view_camera[0]))
 	CX = max(CX,0)
@@ -409,13 +343,3 @@ if device_mouse_check_button(0,mb_middle)
 
 }
 #endregion
-
-if keyboard_check_pressed(vk_space)
-{	ini_open("Var.map")
-	SaveMap()
-	ini_close()
-	
-	ini_open("Var2.map")
-	SaveMap2()
-	ini_close()
-}

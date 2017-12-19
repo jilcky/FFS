@@ -1,9 +1,7 @@
-/// @description 
-//arg+=1
-	
+
 	var xx;
 	var yy;
-	switch (Arg) {
+	switch (image_angle) {
 	    case 0:
 	      xx = 0
 		  yy = 0
@@ -25,7 +23,7 @@
 	        break;
 	  
 	}
-	draw_sprite_ext(SP,0,x-xx ,y-yy,1,1,Arg,c_white,1)
+	draw_sprite_ext(sprite_index,0,x-xx ,y-yy,1,1,image_angle,c_white,image_alpha)
 	
 	
 

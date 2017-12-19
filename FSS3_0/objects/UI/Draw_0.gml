@@ -60,16 +60,16 @@ and device_mouse_y_to_gui(0) - GameSufY > 0 and device_mouse_y_to_gui(0) - GameS
 	
 	//for (var i = 0; i < 360; i+=90) {
 	//	PenArg = i
-	//  var xx  = lengthdir_x(sprite_get_width( PenSP),PenArg)*-1
+	//  var xx  = lengthdir_x(sprite_get_width( PenSpr),PenArg)*-1
 	
 	
-	//var yy  = lengthdir_y(sprite_get_height(PenSP),PenArg)*-1 //+ sprite_get_height(PenSP)
+	//var yy  = lengthdir_y(sprite_get_height(PenSpr),PenArg)*-1 //+ sprite_get_height(PenSpr)
 	
-	//show_debug_message(string(xx)+ " "+string(yy)+" "+string(i))
-	//draw_sprite_ext(PenSP,0,Objx+xx ,Objy+yy,1,1,PenArg,Col,1)
+	//ShowDebug(string(xx)+ " "+string(yy)+" "+string(i))
+	//draw_sprite_ext(PenSpr,0,Objx+xx ,Objy+yy,1,1,PenArg,Col,1)
 	//}
 	
-	//draw_sprite_ext(PenSP,0,Objx+32 ,Objy+32,1,1,180,c_white,1)
+	//draw_sprite_ext(PenSpr,0,Objx+32 ,Objy+32,1,1,180,c_white,1)
 
 	
 	var xx;
@@ -96,7 +96,7 @@ and device_mouse_y_to_gui(0) - GameSufY > 0 and device_mouse_y_to_gui(0) - GameS
 	        break;
 	  
 	}
-	draw_sprite_ext(PenSP,0,Objx-xx ,Objy-yy,1,1,PenArg,Col,1)
+	draw_sprite_ext(PenSpr,0,Objx-xx ,Objy-yy,1,1,PenArg,Col,1)
 	}
 	
 	

@@ -13,4 +13,4 @@ steam_ugc_set_item_preview(updateHandle, "封面.jpg");
 steam_ugc_set_item_content(updateHandle, working_directory);
 requestId = steam_ugc_submit_item_update(updateHandle, "Time:" + date_date_string(date_current_datetime())+" "+date_time_string(date_current_datetime()))
 
-//	show_debug_message("执行上传"+"更新Time:" + date_date_string(date_current_datetime())+" "+date_time_string(date_current_datetime())) 
+//	ShowDebug("执行上传"+"更新Time:" + date_date_string(date_current_datetime())+" "+date_time_string(date_current_datetime())) 

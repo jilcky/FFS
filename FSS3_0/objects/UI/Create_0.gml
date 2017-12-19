@@ -48,6 +48,7 @@ PenSelectButtonSuf = -1
 #endregion
 
 #region 注册笔刷
+//这个带分类
 PenMap = ds_map_create()
 #region 墙体
 var Part = "墙体"
@@ -59,7 +60,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = asset_get_index("sBlock")
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	ds_map_add(Map,"描述","描述/r/n"+string(Name))
 #endregion
 #region 透明
@@ -67,7 +68,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?"墙体"],Name,Map)
 	var SP = sNoSP
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 #region 通常墙体
@@ -75,7 +76,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = asset_get_index("sFadeBlock")
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	ds_map_add(Map,"描述","描述/r/n"+string(Name))
 #endregion
 #region 踏板
@@ -83,7 +84,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = asset_get_index("sFadeBlock")
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	ds_map_add(Map,"描述","描述/r/n"+string(Name))
 #endregion
 
@@ -99,7 +100,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = sNoSP
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 #region 存档点
@@ -107,7 +108,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = sNoSP
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 #region 终点
@@ -115,7 +116,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = sNoSP
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 
@@ -131,7 +132,7 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = sNoSP
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 
@@ -148,11 +149,29 @@ ds_map_add_map(PenMap,Part,ds_map_create())
 	var Map = ds_map_create()
 	ds_map_add_map(PenMap[?Part],Name,Map)
 	var SP = sJianChi
-	ds_map_add(Map,"Spr",SP)
+	ds_map_add(Map,"精灵",SP)
 	
 #endregion
 
 
+#endregion
+
+#region 再载入一边全部的引索
+
+
+AllPenMap = ds_map_create()
+var Key = ds_map_find_first(PenMap)
+for (var i = 0; i < ds_map_size(PenMap); ++i) {
+	
+	var key = ds_map_find_first(PenMap[?Key])
+	for (var a = 0; a < ds_map_size(PenMap[?Key]); ++a) {
+		
+	    ds_map_add(AllPenMap,key,ds_map_find_value(PenMap[?Key],key))
+		
+		key = ds_map_find_next(PenMap[?Key],key)
+	}
+	Key = ds_map_find_next(PenMap,Key)
+}
 #endregion
 
 
@@ -179,14 +198,14 @@ PenButtonX = 128//1280-PenButtonWidth//-PenButton_w
 PenButtonY = 128
 PenButtonSuf = -1
 
-Pen = ds_map_find_first(Map)
+PenName = ds_map_find_first(Map)
 var Map = PenMap[?PenSelect]
-Map = Map[?Pen]
-Map = Map[?"Spr"]
+Map = Map[?PenName]
+Map = Map[?"精灵"]
 //画笔角度
 PenArg = 0
 //画笔精灵
-PenSP = Map
+PenSpr = Map
 #endregion
 
 #region 角度按钮
@@ -207,7 +226,9 @@ ArgButtonSuf = -1
 
 #endregion
 
-
+#region 透明度按钮
+PenAlp = 1
+#endregion
 
 #endregion
 
@@ -244,55 +265,47 @@ ds_map_add(MapInfo,"创建日期",date_current_datetime())
 ds_map_add(MapInfo,"修改日期",0)
 ds_map_add(MapInfo,"实例池数量",0)
 
-MapInstanceList = ds_list_create()
-	#region 加载
-	   var file;
-		file = "Var.map"//get_open_filename("地图|*.map", "");
-		if file != ""
-		 {
-			 ini_open(file)
-			var  T = ini_read_real("验证用","版本号",0)
-			if T = 3.01
-			{
-				
-			var  size = ini_read_real("引索","变量数量",0)
-			for (var i = 0; i < size; ++i) {
-			var key =   ini_read_string("引索",i,"")
-			if key != ""
-			{
-				var Var = ini_read_real("变量种类",key,noone)
-				if Var!= noone{
-					
-					if Var = 0
-					{
-					Var = ini_read_real("信息",key,0)
-					}
-					if Var = 1
-					{
-					Var =  ini_read_string("信息",key,"")
-					}
-					
-				ds_map_replace(MapInfo,key,Var)
-				}
-			}
-			}
 
-			
-			}
-			 ini_close()
-		
-			 
-		 }
+
+#region 保存读取用 缓存区域
+SaveNo = 0
+SaveMap = ds_map_create()
+LoadMap = ds_map_create()
 #endregion
+	#region 加载
+		    
+	ini_open("临时保存.map")
+	scrLoadMap()
+	ini_close()
+	  
+		#endregion
+
+
 #endregion
 
 #region Steam上传部分
+
+
+global.steam_api = false;
+if steam_initialised()
+   {
+   if steam_stats_ready() && steam_is_overlay_enabled()
+      {
+      global.steam_api = true;
+      }
+   }
+
+
+
  new_item = 0
 C=0
  Publish_ID = 1218800105//1220132504
  
  uploadMap = ds_map_create();
 updateHandle = 0
-#endregion
 
 Steam_get_user_steam_id = steam_get_user_steam_id()
+
+
+
+#endregion
