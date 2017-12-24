@@ -1,7 +1,7 @@
 /// @description 
 #region 记录鼠标位置
-MouseOldX = mouse_x
-MouseOldY = mouse_y
+MouseOldX = device_mouse_x_to_gui(0)
+MouseOldY = device_mouse_y_to_gui(0)
 #endregion
 #region Steam
 #region SteamApi启动
