@@ -1,4 +1,5 @@
 /// @description 用于记录本地玩家编辑的地图
+oGame.rTitleObject = self.object_index
 
 #region List
 Select = 0

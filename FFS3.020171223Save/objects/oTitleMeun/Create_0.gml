@@ -1,5 +1,5 @@
 /// @description 
-
+oGame.rTitleObject = self.object_index
 Select = 0
 
 draw_set_font(fTitle)

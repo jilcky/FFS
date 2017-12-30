@@ -1,5 +1,5 @@
 
-
+if variable_instance_exists(id,"MeunButton")
 for (var i = 0; i < array_length_1d( MeunButton); ++i) 
 {
 ds_map_destroy(MeunButton[i])
@@ -17,3 +17,4 @@ ini_write_string("本地地图列表","List",ds_list_write(List))
 ini_write_real("本地地图列表","最大ID",MaxID)
 ini_close()
 #endregion
+

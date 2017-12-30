@@ -7,7 +7,7 @@ window_set_caption("FFS")
 
 #region 游戏按钮
 #region 最上方按钮
-draw_set_font(fontButton)
+draw_set_font(fTitle)
 
 TopButton[0] = "保存"
 TopButton[1] = "导入"
@@ -15,10 +15,8 @@ TopButton[2] = "导出"
 TopButton[3] = "清空"
 TopButton[4] = "上传"
 TopButton[5] = "帮助"
-TopButton[6] = "修改封面"
-TopButton[7] = "修改描述"
-TopButton[8] = "修改名称"
-TopButton_w = 96
+TopButton[6] = "修改信息"
+TopButton_w = 128
 TopButton_h = 32
 TopButtonWidth =(TopButton_w+8)*array_length_1d(TopButton)+TopButton_w/2+8
 TopButtonHeight = 33
@@ -28,7 +26,7 @@ TopButtonSuf = -1
 #endregion
 
 #region 分类按钮
-draw_set_font(fontButton)
+draw_set_font(fTitle)
 
 PenSelectButton[0] = "墙体"
 PenSelectButton[1] = "玩家"
@@ -47,131 +45,147 @@ PenSelectButtonSuf = -1
 #endregion
 
 #region 注册笔刷
-//这个带分类
-PenMap = ds_map_create()
-#region 墙体
-var Part = "墙体"
-//主part
-ds_map_add_map(PenMap,Part,ds_map_create())
-//子part
-#region 通常墙体
-	var Name = "通常墙体"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = asset_get_index("sBlock")
-	ds_map_add(Map,"精灵",SP)
-	ds_map_add(Map,"描述","描述/r/n"+string(Name))
+PenAdd("Save","玩家")
+PenAdd("End","玩家")
+PenAdd("Player","玩家")
+
+PenAdd("Block","墙体")
+PenAdd("FadeBlock","墙体")
+PenAdd("PingTai","墙体")
+
+PenAdd("JumpBlock","协助")
+
+PenAdd("JianChi","威胁")
+
 #endregion
-#region 透明
-	var Name = "透明墙体"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?"墙体"],Name,Map)
-	var SP = sNoSP
-	ds_map_add(Map,"精灵",SP)
+
+
+#region 注册笔刷
+////这个带分类
+//PenMap = ds_map_create()
+//#region 墙体
+//var Part = "墙体"
+////主part
+//ds_map_add_map(PenMap,Part,ds_map_create())
+////子part
+//#region 通常墙体
+//	var Name = "通常墙体"
+//var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = asset_get_index("sBlock")
+//	ds_map_add(Map,"精灵",SP)
+//	ds_map_add(Map,"描述","描述/r/n"+string(Name))
+//#endregion
+//#region 透明
+//	var Name = "透明墙体"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?"墙体"],Name,Map)
+//	var SP = sNoSP
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
-#region 通常墙体
-	var Name = "Fade墙体"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = asset_get_index("sFadeBlock")
-	ds_map_add(Map,"精灵",SP)
-	ds_map_add(Map,"描述","描述/r/n"+string(Name))
-#endregion
-#region 踏板
-	var Name = "踏板"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = asset_get_index("sFadeBlock")
-	ds_map_add(Map,"精灵",SP)
-	ds_map_add(Map,"描述","描述/r/n"+string(Name))
-#endregion
+//#endregion
+//#region 通常墙体
+//	var Name = "Fade墙体"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = asset_get_index("sFadeBlock")
+//	ds_map_add(Map,"精灵",SP)
+//	ds_map_add(Map,"描述","描述/r/n"+string(Name))
+//#endregion
+//#region 踏板
+//	var Name = "踏板"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = asset_get_index("sFadeBlock")
+//	ds_map_add(Map,"精灵",SP)
+//	ds_map_add(Map,"描述","描述/r/n"+string(Name))
+//#endregion
 
-#endregion
+//#endregion
 
-#region 玩家
-var Part = "玩家"
-//主part
-ds_map_add_map(PenMap,Part,ds_map_create())
-//子part
-#region 玩家
-	var Name = "玩家"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = sNoSP
-	ds_map_add(Map,"精灵",SP)
+//#region 玩家
+//var Part = "玩家"
+////主part
+//ds_map_add_map(PenMap,Part,ds_map_create())
+////子part
+//#region 玩家
+//	var Name = "玩家"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = sNoSP
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
-#region 存档点
-	var Name = "存档点"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = sNoSP
-	ds_map_add(Map,"精灵",SP)
+//#endregion
+//#region 存档点
+//	var Name = "存档点"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = sNoSP
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
-#region 终点
-	var Name = "终点"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = sNoSP
-	ds_map_add(Map,"精灵",SP)
+//#endregion
+//#region 终点
+//	var Name = "终点"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = sNoSP
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
+//#endregion
 
-#endregion
+//#endregion
 
-#region "协助"
-var Part ="协助"
-//主part
-ds_map_add_map(PenMap,Part,ds_map_create())
-//子part
-#region 玩家
-	var Name = "蹦床"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = sNoSP
-	ds_map_add(Map,"精灵",SP)
+//#region "协助"
+//var Part ="协助"
+////主part
+//ds_map_add_map(PenMap,Part,ds_map_create())
+////子part
+//#region 玩家
+//	var Name = "蹦床"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = sNoSP
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
+//#endregion
 
 
-#endregion
+//#endregion
 
-#region "威胁"
-var Part ="威胁"
-//主part
-ds_map_add_map(PenMap,Part,ds_map_create())
-//子part
-#region 尖刺
-	var Name = "尖刺"
-	var Map = ds_map_create()
-	ds_map_add_map(PenMap[?Part],Name,Map)
-	var SP = sJianChi
-	ds_map_add(Map,"精灵",SP)
+//#region "威胁"
+//var Part ="威胁"
+////主part
+//ds_map_add_map(PenMap,Part,ds_map_create())
+////子part
+//#region 尖刺
+//	var Name = "尖刺"
+//	var Map = ds_map_create()
+//	ds_map_add_map(PenMap[?Part],Name,Map)
+//	var SP = sJianChi
+//	ds_map_add(Map,"精灵",SP)
 	
-#endregion
+//#endregion
 
 
-#endregion
+//#endregion
 
-#region 再载入一边全部的引索
+//#region 再载入一边全部的引索
 
 
-AllPenMap = ds_map_create()
-var Key = ds_map_find_first(PenMap)
-for (var i = 0; i < ds_map_size(PenMap); ++i) {
+//AllPenMap = ds_map_create()
+//var Key = ds_map_find_first(PenMap)
+//for (var i = 0; i < ds_map_size(PenMap); ++i) {
 	
-	var key = ds_map_find_first(PenMap[?Key])
-	for (var a = 0; a < ds_map_size(PenMap[?Key]); ++a) {
+//	var key = ds_map_find_first(PenMap[?Key])
+//	for (var a = 0; a < ds_map_size(PenMap[?Key]); ++a) {
 		
-	    ds_map_add(AllPenMap,key,ds_map_find_value(PenMap[?Key],key))
+//	    ds_map_add(AllPenMap,key,ds_map_find_value(PenMap[?Key],key))
 		
-		key = ds_map_find_next(PenMap[?Key],key)
-	}
-	Key = ds_map_find_next(PenMap,Key)
-}
-#endregion
+//		key = ds_map_find_next(PenMap[?Key],key)
+//	}
+//	Key = ds_map_find_next(PenMap,Key)
+//}
+//#endregion
 
 
 #endregion
@@ -200,7 +214,7 @@ PenButtonSuf = -1
 PenName = ds_map_find_first(Map)
 var Map = PenMap[?PenSelect]
 Map = Map[?PenName]
-Map = Map[?"精灵"]
+Map = Map[?"sprite_index"]
 //画笔角度
 PenArg = 0
 //画笔精灵
@@ -257,6 +271,7 @@ Objy = 0
 
 #region 地图信息
 MapInfo = ds_map_create()
+
 ds_map_add(MapInfo,"名称"," ")
 ds_map_add(MapInfo,"描述"," ")
 ds_map_add(MapInfo,"SteamID",0)
@@ -273,7 +288,9 @@ LoadMap = ds_map_create()
 #endregion
 	#region 加载
 		    
-	ini_open("临时保存.map")
+	var file = global.MapFile //"本地地图/"+string(oLocalMapMeun.List[|oLocalMapMeun.Part])
+ini_open(file+"/Map.ini")
+
 	scrLoadMap()
 	ini_close()
 	  
@@ -307,4 +324,9 @@ Steam_get_user_steam_id = steam_get_user_steam_id()
 
 
 
+#endregion
+
+#region 创建网格系统 用于排除碰撞检测的问题所在
+MapGrid = ds_grid_create(room_width div 32+1, room_height div 32+1)
+MapGridSuf = surface_create(room_width,room_height)
 #endregion

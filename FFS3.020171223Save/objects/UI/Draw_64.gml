@@ -5,8 +5,8 @@
 
 #region 绘制背景
 	gpu_set_texfilter(true)
-   var Size = 1280/sprite_get_width(FakeSuperSonia)
-	draw_sprite_ext(FakeSuperSonia,0,0,0,Size,Size,0,c_white,1)
+   var Size = 1280/sprite_get_width(sTitleBG)
+	draw_sprite_ext(sTitleBG,0,0,0,Size,Size,0,c_white,1)
 	//draw_set_color(c_black)
 	//draw_set_alpha(0.7)
 	//draw_rectangle(0,0,1280,720,0)
@@ -34,7 +34,7 @@ if surface_exists( GameSuf)
 #region 地图信息
 	var key  = ds_map_find_first(MapInfo)
 	for (var i = 0; i < ds_map_size(MapInfo); ++i) {
-		draw_set_font(fontText)
+		draw_set_font(fText)
 		var str = string(key)+":"+string(ds_map_find_value(MapInfo,key))
 		var xx = 1280
 		var yy = GameSufY+GameSufH+string_height(str)*i
@@ -49,7 +49,7 @@ if surface_exists( GameSuf)
 
 
 #region 按钮
-draw_set_font(fontButton)
+draw_set_font(fTitle)
 	
 #region TopButtonSuf
 if surface_exists(TopButtonSuf ) 
@@ -302,13 +302,13 @@ surface_reset_target()
 
 #endregion
 
-if debug_mode{
+if true{
 	draw_set_valign(0)
 	draw_set_halign(0)
 #region Debug内容
   draw_set_alpha(1)
   draw_set_color(c_white)
-  draw_set_font(fontDebug)
+  draw_set_font(fDebug)
   var Meun;
 Meun[0]  = "device_mouse_x_to_gui(0):"+string( device_mouse_x_to_gui(0))
 Meun[1]  = "device_mouse_y_to_gui(0):"+string( device_mouse_y_to_gui(0))
@@ -318,11 +318,13 @@ Meun[4] = "camera_get_view_width():"+string(camera_get_view_width(view_camera[0]
 Meun[5] = "camera_get_view_height():"+string(camera_get_view_height(view_camera[0]))
 Meun[6] = "Objx"+string(Objx)
 Meun[7] = "Objy"+string(Objy)
+Meun[6] = "Gridx"+string(Objx div 32)
+Meun[7] = "Gridy"+string(Objy div 32)
 
 	for (var i = 0; i < array_length_1d(Meun); ++i) {
 		var Str = Meun[i]
 		var h = string_height(Meun[i])
-	// draw_text(0,32+i*h,Str)
+	 draw_text(0,32+i*h,Str)
 	}
 	
 	if device_mouse_x_to_gui(0) - GameSufX > 0 and device_mouse_x_to_gui(0) - GameSufX < GameSufW
@@ -330,18 +332,18 @@ and device_mouse_y_to_gui(0) - GameSufY > 0 and device_mouse_y_to_gui(0) - GameS
 {  draw_set_color(c_red)
 	draw_rectangle(GameSufX,GameSufY,GameSufW+GameSufX,GameSufH+GameSufY,1)
 }
-	var uploadMap = ds_map_create();
-steam_ugc_get_item_update_progress(updateHandle, uploadMap);
-var statusCode = uploadMap[? "status_code"];
-var status = uploadMap[? "status_string"];
-var processed = uploadMap[? "bytes_processed"];
-var total = uploadMap[? "bytes_total"];
-draw_text(32, 0, "Upload info for item:" + string(updateHandle));
-draw_text(32, 15, "status code:" + string(statusCode));
-draw_text(32, 30, "status:" + string(status));
-draw_text(32, 45, "bytes processed:" +string(processed));
-draw_text(32, 60, "bytes total:" + string( total));
-ds_map_destroy(uploadMap);
+//	var uploadMap = ds_map_create();
+//steam_ugc_get_item_update_progress(updateHandle, uploadMap);
+//var statusCode = uploadMap[? "status_code"];
+//var status = uploadMap[? "status_string"];
+//var processed = uploadMap[? "bytes_processed"];
+//var total = uploadMap[? "bytes_total"];
+//draw_text(32, 0, "Upload info for item:" + string(updateHandle));
+//draw_text(32, 15, "status code:" + string(statusCode));
+//draw_text(32, 30, "status:" + string(status));
+//draw_text(32, 45, "bytes processed:" +string(processed));
+//draw_text(32, 60, "bytes total:" + string( total));
+//ds_map_destroy(uploadMap);
 	
 	
 #endregion/// @description 

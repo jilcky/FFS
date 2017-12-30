@@ -78,8 +78,15 @@ else
 				   
 			  case 1 ://新建
 		CreateNewMap()
+		global.LoadPart = oLocalMapMeun.Part
 				break;
 				   
+				   case 0 ://编辑
+				   
+global.MapFile = "本地地图/"+string(oLocalMapMeun.List[|oLocalMapMeun.Part])
+global.LoadPart = oLocalMapMeun.Part
+room_goto(rCreate)
+				   break;
 		    default:
 
 		        break;
@@ -93,14 +100,14 @@ else
 
 #endregion
 
-
 #region 左右调整
-if KeyCheck("左",0)
+var PartMax = ds_list_size(List)-1
+if KeyCheck("左",0) 
 Part --;
-if KeyCheck("右",0)
+if KeyCheck("右",0) 
 Part ++;
 
-if KeyCheck("左",0) or KeyCheck("右",0)
+if (KeyCheck("左",0) ) or (KeyCheck("右",0) )
 {
 	var PartMax = ds_list_size(List)-1
 	Part = max(Part,0)
@@ -113,9 +120,17 @@ if ini_key_exists("地图信息","基本信息")
 {
 MapInfo = ds_map_create()
 ds_map_read(MapInfo,ini_read_string("地图信息","基本信息",""))
-surface_free(CoverSuf)
 }
-	
+var ID = MapInfo[?"LocalID"]
+var file = "本地地图/"+string(ID)
+if sprite_exists(Cover)
+{sprite_delete(Cover)}
+ Cover = sprite_add(string(file)+"/封面.png",1,0,0,0,0)
+CoverSuf = surface_create(1280,720)
+surface_set_target(CoverSuf)
+draw_clear_alpha(c_white,0)
+draw_sprite(Cover,1,0,0)
+surface_reset_target()
 }
 #endregion
 

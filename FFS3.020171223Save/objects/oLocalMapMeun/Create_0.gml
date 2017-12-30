@@ -1,5 +1,7 @@
 /// @description 用于记录本地玩家编辑的地图
 
+oGame.rTitleObject = self.object_index
+
 #region 读取地图列表
 ini_open("GameSetting.ini")
 //当列表内容为0的时候记得删除
@@ -11,6 +13,7 @@ ds_list_read(List,ini_read_string("本地地图列表","List",""))
 }
 else
 {
+	global.LoadPart = 0
 	CreateNewMap()
 }
 ini_close()
@@ -43,11 +46,18 @@ var W = string_width(Meun[i] )
 
 #endregion
 
+#region 地图
+
 //左右调整启动的地图
 Part = 0
-
+if variable_global_exists("LoadPart")
+Part = global.LoadPart
 //装填第一个 地图信息的
-var file = "本地地图/"+string(List[|0])
+if ds_list_find_value(List,Part)
+var N = Part
+else
+var N = 0
+var file = "本地地图/"+string(List[|N])
 ini_open(file+"/Map.ini")
 if ini_section_exists("地图信息")
 if ini_key_exists("地图信息","基本信息")
@@ -56,3 +66,5 @@ MapInfo = ds_map_create()
 ds_map_read(MapInfo,ini_read_string("地图信息","基本信息",""))
 }
 CoverSuf  = -1
+Cover = -1
+#endregion

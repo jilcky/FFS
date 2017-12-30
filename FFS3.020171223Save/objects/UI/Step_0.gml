@@ -16,9 +16,12 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	switch (TopButton[i]) {
 	#region 保存
 		    case "保存":		
-	ini_open("临时保存.map")
+			
+	var file = global.MapFile //"本地地图/"+string(oLocalMapMeun.List[|oLocalMapMeun.Part])
+	ini_open(file+"/Map.ini")
 	scrSaveMap()
 	ini_close()
+	room_goto(rTitle)
 	        break;
 		#endregion
 	#region 导出
@@ -59,8 +62,8 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	#endregion
 	#region 删除
 case "删除":
-file_delete("临时保存.map")
-game_restart()
+//file_delete("临时保存.map")
+//game_restart()
 break;
 #endregion
 	#region 修改名称
@@ -169,7 +172,7 @@ PenButtonSuf = -1
 		PenName = PenButton[0]//ds_map_find_first(Map)
 		var Map = PenMap[?PenSelect]
 		Map = Map[?PenName]
-		Map = Map[?"精灵"]
+		Map = Map[?"sprite_index"]
 		PenSpr = Map
 		#endregion
 	if surface_exists(PenButtonSuf)
@@ -198,7 +201,7 @@ for (var i = 0; i < array_length_1d(PenButton); ++i) {
 	PenName = PenButton[i]//ds_map_find_first(Map)
 	var Map = PenMap[?PenSelect]
 	Map = Map[?PenName]
-	Map = Map[?"精灵"]
+	Map = Map[?"sprite_index"]
 	PenSpr = Map
 
 	}
@@ -251,10 +254,11 @@ Objx = Objx div 32 *32
 Objy = GameSufMy/GameSufH*camera_get_view_height(view_camera[0]) + camera_get_view_y(view_camera[0])
 Objy = Objy div 32*32
  #endregion
-var C= collision_point(Objx+16,Objy+16,oObject,0,1)
+//var C= collision_point(Objx+16,Objy+16,oObject,0,1)
 	#region 摆放物体
 	if mouse_check_button(mb_left)
 	{
+	var 	C = ds_grid_get(MapGrid, Objx div 32 ,Objy div 32)  
 		if C //检测有没有东西
 		{
 		}
@@ -262,21 +266,120 @@ var C= collision_point(Objx+16,Objy+16,oObject,0,1)
 		{
 			//创建
 			//layer_get_id()
- 	var A = instance_create_layer(Objx,Objy,"Obj",oObject)
-	A.Name = PenName
-	A.sprite_index = PenSpr
-	A.image_angle = PenArg
-	A.image_alpha = PenAlp
+			var map = ds_map_create()
+			ds_map_add(map,"name",PenName)
+			ds_map_add(map,"image_angle",PenArg)
+			ds_map_add(map,"image_alpha",PenAlp)
+			MapGrid[#Objx div 32 ,Objy div 32] = map
+ 	////MapGrid[#Objx div 32 ,Objy div 32] = instance_create_layer(Objx,Objy,"Obj",oObject)
+	//MapGrid[#Objx div 32 ,Objy div 32] .Name = PenName
+	//MapGrid[#Objx div 32 ,Objy div 32] .sprite_index = PenSpr
+	//MapGrid[#Objx div 32 ,Objy div 32] .image_angle = PenArg
+	//MapGrid[#Objx div 32 ,Objy div 32] .image_alpha = PenAlp
+	#region 设置表面
+	surface_set_target(MapGridSuf )
+			
+	var xx;
+	var yy;
+	switch (PenArg) {
+	    case 0:
+	      xx = 0
+		  yy = 0
+	        break;
+			
+			 case 90:
+	      xx = 0
+		  yy = 0 -32
+	        break;
+			
+			 case 180:
+	      xx = 0 -32
+		  yy = 0 - 32
+	        break;
+			
+			 case 270:
+	      xx = 0 -32
+		  yy =0
+	        break;
+	  
+	}
+	
+	draw_sprite_ext(PenSpr,0,(Objx div 32)*32-xx ,(Objy div 32)*32-yy,1,1,PenArg,c_white,1)
+	
+	
+
+
+	
+	surface_reset_target()
+	#endregion
+
 		}
 	}
 	#endregion
 #region 右键删除
-	if mouse_check_button(mb_right)
+	if  mouse_check_button(mb_right)
 	{
+		var 	C = ds_grid_get(MapGrid, Objx div 32 ,Objy div 32)  
 		if C//检测有没有东西
-		{	with(C){
-			instance_destroy()
+		{	
+			
+			ds_map_destroy(MapGrid[#Objx div 32 ,Objy div 32])
+			MapGrid[#Objx div 32 ,Objy div 32] = 0
+	surface_set_target(MapGridSuf)
+	draw_clear_alpha(c_white,0)
+			for (var a = 0; a < ds_grid_width(MapGrid); ++a) {
+			   for (var b = 0; b < ds_grid_height(MapGrid); ++b) {
+				   var Map = ds_grid_get(MapGrid,a,b)
+			       if Map
+				   {
+				   #region 绘制
+				   	#region 设置表面
+
+			
+	var xx;
+	var yy;
+	var Arg;
+	var Spr;
+	Arg = Map[?"image_angle"]
+	Spr = GetIndex("s"+ Map[?"name"],asset_sprite)
+	
+	switch (Arg) {
+	    case 0:
+	      xx = 0
+		  yy = 0
+	        break;
+			
+			 case 90:
+	      xx = 0
+		  yy = 0 -32
+	        break;
+			
+			 case 180:
+	      xx = 0 -32
+		  yy = 0 - 32
+	        break;
+			
+			 case 270:
+	      xx = 0 -32
+		  yy =0
+	        break;
+	  
+	}
+	
+	draw_sprite_ext(Spr,0,(a)*32-xx ,(b)*32-yy,1,1,Arg,c_white,1)
+	
+	
+
+
+	
+
+	#endregion
+				   #endregion
+				   }
+					
+			   }
 			}
+				surface_reset_target()
 		}
 	
 	}

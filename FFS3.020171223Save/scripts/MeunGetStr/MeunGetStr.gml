@@ -7,4 +7,4 @@ var Text = Map[?Language]
 return Text
 }
 else
-return argument0
+return string(oGame.Language)+":" + string(argument0)

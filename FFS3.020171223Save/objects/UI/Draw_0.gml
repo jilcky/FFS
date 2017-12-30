@@ -8,7 +8,7 @@ if GameCamSize <=1{
 		LineSuf  = surface_create(room_width,room_height);
 		surface_set_target(LineSuf)
 		draw_set_alpha(1)
-		draw_set_font(fontDebug)
+		draw_set_font(fDebug)
 		draw_set_color(c_white)
 		var Size = 2 
 		//画竖的线
@@ -105,3 +105,5 @@ and device_mouse_y_to_gui(0) - GameSufY > 0 and device_mouse_y_to_gui(0) - GameS
 #endregion
 
 #endregion
+
+draw_surface(MapGridSuf,0,0)

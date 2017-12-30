@@ -35,7 +35,9 @@ draw_text(Map[?"X"],Map[?"Y"],Meun[i])
 if !surface_exists(CoverSuf){
 var ID = MapInfo[?"LocalID"]
 var file = "本地地图/"+string(ID)
-var Cover = sprite_add(string(file)+"/封面.png",1,0,0,0,0)
+if sprite_exists(Cover)
+{sprite_delete(Cover)}
+ Cover = sprite_add(string(file)+"/封面.png",1,0,0,0,0)
 CoverSuf = surface_create(1280,720)
 surface_set_target(CoverSuf)
 draw_sprite(Cover,1,0,0)
