@@ -21,6 +21,18 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	ini_open(file+"/Map.ini")
 	scrSaveMap()
 	ini_close()
+	
+	var Map = variable_instance_get(id,"Map全家桶")
+	var Key = ds_map_find_first(Map)
+	var Var = Key
+	for (var i = 1; i < ds_map_size(Map); ++i) {
+		Var = Key
+		Key = ds_map_find_next(Map,Key)
+		ds_map_destroy(Var)
+	}
+	ds_map_destroy(ds_map_find_first(Map))
+	ds_map_destroy(Map)
+	
 	room_goto(rTitle)
 	        break;
 		#endregion
@@ -266,7 +278,7 @@ Objy = Objy div 32*32
 		{
 			//创建
 			//layer_get_id()
-			var map = ds_map_create()
+			var map = Ds_Map_Create()
 			ds_map_add(map,"name",PenName)
 			ds_map_add(map,"image_angle",PenArg)
 			ds_map_add(map,"image_alpha",PenAlp)

@@ -1,9 +1,9 @@
 /// @description 
-application_surface_draw_enable(false)
-gpu_set_texfilter(true)
+//application_surface_draw_enable(false)
+//gpu_set_texfilter(true)
 
-window_set_caption("FFS")
-//window_set_cursor(cursor);///鼠标类型
+//window_set_caption("FFS")
+////window_set_cursor(cursor);///鼠标类型
 
 #region 游戏按钮
 #region 最上方按钮
@@ -62,15 +62,15 @@ PenAdd("JianChi","威胁")
 
 #region 注册笔刷
 ////这个带分类
-//PenMap = ds_map_create()
+//PenMap = Ds_Map_Create()
 //#region 墙体
 //var Part = "墙体"
 ////主part
-//ds_map_add_map(PenMap,Part,ds_map_create())
+//ds_map_add_map(PenMap,Part,Ds_Map_Create())
 ////子part
 //#region 通常墙体
 //	var Name = "通常墙体"
-//var Map = ds_map_create()
+//var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = asset_get_index("sBlock")
 //	ds_map_add(Map,"精灵",SP)
@@ -78,7 +78,7 @@ PenAdd("JianChi","威胁")
 //#endregion
 //#region 透明
 //	var Name = "透明墙体"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?"墙体"],Name,Map)
 //	var SP = sNoSP
 //	ds_map_add(Map,"精灵",SP)
@@ -86,7 +86,7 @@ PenAdd("JianChi","威胁")
 //#endregion
 //#region 通常墙体
 //	var Name = "Fade墙体"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = asset_get_index("sFadeBlock")
 //	ds_map_add(Map,"精灵",SP)
@@ -94,7 +94,7 @@ PenAdd("JianChi","威胁")
 //#endregion
 //#region 踏板
 //	var Name = "踏板"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = asset_get_index("sFadeBlock")
 //	ds_map_add(Map,"精灵",SP)
@@ -106,11 +106,11 @@ PenAdd("JianChi","威胁")
 //#region 玩家
 //var Part = "玩家"
 ////主part
-//ds_map_add_map(PenMap,Part,ds_map_create())
+//ds_map_add_map(PenMap,Part,Ds_Map_Create())
 ////子part
 //#region 玩家
 //	var Name = "玩家"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = sNoSP
 //	ds_map_add(Map,"精灵",SP)
@@ -118,7 +118,7 @@ PenAdd("JianChi","威胁")
 //#endregion
 //#region 存档点
 //	var Name = "存档点"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = sNoSP
 //	ds_map_add(Map,"精灵",SP)
@@ -126,7 +126,7 @@ PenAdd("JianChi","威胁")
 //#endregion
 //#region 终点
 //	var Name = "终点"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = sNoSP
 //	ds_map_add(Map,"精灵",SP)
@@ -138,11 +138,11 @@ PenAdd("JianChi","威胁")
 //#region "协助"
 //var Part ="协助"
 ////主part
-//ds_map_add_map(PenMap,Part,ds_map_create())
+//ds_map_add_map(PenMap,Part,Ds_Map_Create())
 ////子part
 //#region 玩家
 //	var Name = "蹦床"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = sNoSP
 //	ds_map_add(Map,"精灵",SP)
@@ -155,11 +155,11 @@ PenAdd("JianChi","威胁")
 //#region "威胁"
 //var Part ="威胁"
 ////主part
-//ds_map_add_map(PenMap,Part,ds_map_create())
+//ds_map_add_map(PenMap,Part,Ds_Map_Create())
 ////子part
 //#region 尖刺
 //	var Name = "尖刺"
-//	var Map = ds_map_create()
+//	var Map = Ds_Map_Create()
 //	ds_map_add_map(PenMap[?Part],Name,Map)
 //	var SP = sJianChi
 //	ds_map_add(Map,"精灵",SP)
@@ -172,7 +172,7 @@ PenAdd("JianChi","威胁")
 //#region 再载入一边全部的引索
 
 
-//AllPenMap = ds_map_create()
+//AllPenMap = Ds_Map_Create()
 //var Key = ds_map_find_first(PenMap)
 //for (var i = 0; i < ds_map_size(PenMap); ++i) {
 	
@@ -270,7 +270,7 @@ Objy = 0
 #endregion
 
 #region 地图信息
-MapInfo = ds_map_create()
+MapInfo = Ds_Map_Create()
 
 ds_map_add(MapInfo,"名称"," ")
 ds_map_add(MapInfo,"描述"," ")
@@ -283,8 +283,8 @@ ds_map_add(MapInfo,"实例池数量",0)
 
 #region 保存读取用 缓存区域
 SaveNo = 0
-SaveMap = ds_map_create()
-LoadMap = ds_map_create()
+SaveMap = Ds_Map_Create()
+LoadMap = Ds_Map_Create()
 #endregion
 	#region 加载
 		    
@@ -317,10 +317,10 @@ if steam_initialised()
 C=0
  Publish_ID = 1218800105//1220132504
  
- uploadMap = ds_map_create();
+ uploadMap = Ds_Map_Create();
 updateHandle = 0
 
-Steam_get_user_steam_id = steam_get_user_steam_id()
+//Steam_get_user_steam_id = steam_get_user_steam_id()
 
 
 
@@ -330,3 +330,6 @@ Steam_get_user_steam_id = steam_get_user_steam_id()
 MapGrid = ds_grid_create(room_width div 32+1, room_height div 32+1)
 MapGridSuf = surface_create(room_width,room_height)
 #endregion
+
+
+

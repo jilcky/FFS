@@ -31,7 +31,7 @@ requestId = steam_ugc_submit_item_update(updateHandle, "Version 1.2")
 #endregion
 
 if  oGame.MapInfo[?"SteamID"]{
- uploadMap = ds_map_create();
+ uploadMap = Ds_Map_Create();
 steam_ugc_get_item_update_progress(oGame.MapInfo[?"SteamID"], uploadMap);
 var statusCode = uploadMap[? "status_code"];
 var status = uploadMap[? "status_string"];

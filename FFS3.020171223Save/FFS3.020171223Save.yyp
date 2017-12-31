@@ -599,6 +599,14 @@
             }
         },
         {
+            "Key": "b526b811-aaab-4f1a-b130-6749d68bb0de",
+            "Value": {
+                "id": "7e11df96-7514-4e7c-a613-d913dea78ba0",
+                "resourcePath": "scripts\\Ds_Map_Create\\Ds_Map_Create.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "b5df3424-b917-49de-9636-3fe3f42d7ee6",
             "Value": {
                 "id": "d8b46b4f-414b-4cfa-a61f-512d3ee3f24d",
@@ -862,7 +870,8 @@
         "44d1fd1e-099a-42a1-91ef-5ceddbc57d46",
         "bf2a88ee-56e2-4e12-9f42-fda809c96f1f",
         "00d2f27d-8b40-402d-9ab1-62c515043969",
-        "67fb26e8-01ef-49b2-ba07-9744b5a638c5"
+        "67fb26e8-01ef-49b2-ba07-9744b5a638c5",
+        "b526b811-aaab-4f1a-b130-6749d68bb0de"
     ],
     "tutorial": ""
 }

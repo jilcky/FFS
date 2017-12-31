@@ -25,10 +25,10 @@ BGMvolume =  ini_read_real("volume","BGMvolume",100)
 	LanguageList = ds_list_create()
 	#region 菜单文本
 	MeunTextGrid = load_csv("Text.csv")
-	MeunTextMap = ds_map_create()
+	MeunTextMap = Ds_Map_Create()
 	 
 	 //引索
-	var  Map = ds_map_create()
+	var  Map = Ds_Map_Create()
 	
 	for (var h = 1; h < ds_grid_height(MeunTextGrid); ++h) {
 		
@@ -63,10 +63,10 @@ MouseUseAddTime = 0;
 
 #endregion
 	#region 键位注册
-		KeyMap = ds_map_create()
+		KeyMap = Ds_Map_Create()
 		//KeyOutList = ds_list_create()
 		
-		GamePadMap = ds_map_create()
+		GamePadMap = Ds_Map_Create()
 		//GamePadOutList = ds_list_create()
 		
 		
