@@ -40,6 +40,7 @@ if sprite_exists(Cover)
  Cover = sprite_add(string(file)+"/封面.png",1,0,0,0,0)
 CoverSuf = surface_create(1280,720)
 surface_set_target(CoverSuf)
+if sprite_exists(Cover)
 draw_sprite(Cover,1,0,0)
 surface_reset_target()
 }

@@ -2,6 +2,7 @@
 /// @function textbox_get_cursor_at
 /// @param textbox
 /// @param  xCoordinate
+/*
 var X = argument1 - argument0.x + offset;
 with(argument0)
 {

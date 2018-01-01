@@ -118,7 +118,7 @@ ini_close()
 
 
 #endregion
-room_goto(rTitle)
+room_goto_next()
 
 //返回退出后出现的对应菜单页
 rTitleObject = oTitleMeun;

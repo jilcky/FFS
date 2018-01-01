@@ -62,8 +62,9 @@ ini_open(file+"/Map.ini")
 if ini_section_exists("地图信息")
 if ini_key_exists("地图信息","基本信息")
 {
-MapInfo = Ds_Map_Create()
+MapInfo = ds_map_create()
 ds_map_read(MapInfo,ini_read_string("地图信息","基本信息",""))
+show_debug_message(ini_read_string("地图信息","基本信息",""))
 }
 CoverSuf  = -1
 Cover = -1

@@ -191,7 +191,8 @@ PenAdd("JianChi","威胁")
 #endregion
 
 #region 笔刷按钮
-
+var PenMap = variable_instance_get(id,"PenMap")
+var AllPenMap = variable_instance_get(id,"AllPenMap")
 var Str = PenSelect
 var Map= PenMap[?Str]
 var key = ds_map_find_first(Map)
@@ -255,7 +256,7 @@ GameSufY = 128;
 GameSufW = (1280*0.618)div 32*32
 GameSufH = (720*0.618) div 32*32
 
-window_set_size(1280,720)
+//window_set_size(1280,720)
 GameCamSize = 1;
 GameSufSMx = 0
 GameSufSMy = 0

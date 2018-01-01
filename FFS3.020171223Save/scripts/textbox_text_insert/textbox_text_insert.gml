@@ -5,6 +5,7 @@
 /*
  * Inserts text in the textbox at the cursor position
 */
+/*
 with(argument0)
 {
     text = string_insert(argument1, text, cursor + 1);

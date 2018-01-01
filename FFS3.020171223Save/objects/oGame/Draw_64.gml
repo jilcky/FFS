@@ -13,6 +13,8 @@ if room = rTitle
 }
 #region Debug内容展示
 	if debug_mode{
+		
+	//	depth = -100
 		draw_set_font(fDebug)
 		draw_set_color(c_white)
 		draw_set_halign(0)

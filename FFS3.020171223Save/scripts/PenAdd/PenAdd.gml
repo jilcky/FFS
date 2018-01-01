@@ -8,8 +8,8 @@ if !variable_instance_exists(id,"AllPenMap")
 	variable_instance_set(id,"AllPenMap",Ds_Map_Create())
 }
 
-
-
+var PenMap = variable_instance_get(id,"PenMap")
+var AllPenMap = variable_instance_get(id,"AllPenMap")
 var Name  = argument0
 var SP = GetIndex("s"+Name,asset_sprite)
 var Obj =  GetIndex("o"+Name,asset_object)

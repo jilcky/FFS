@@ -29,15 +29,22 @@ ini_write_string("对应文本","基本信息",str)
 //	event_user(0)
 //}
 
+var Name = "编辑区域"
+MapGrid = variable_instance_get(id,Name)
+var i = 0
+var MapGrid = MapGrid[?"储存表格"]
 for (var a = 0; a < ds_grid_width(MapGrid); ++a) {
+
 			   for (var b = 0; b < ds_grid_height(MapGrid); ++b) {
+				
 if ds_exists(MapGrid[# a,b],ds_type_map)
 {
-ini_write_string("对应文本","基本信息",ds_map_write(MapGrid[# a,b]))
+ini_write_string("对应文本","实例"+string(i),ds_map_write(MapGrid[# a,b]))
+i++
 }
-			   }}
+  }}
 
 
-	ds_map_clear(SaveMap)
-SaveNo = 0
+//	ds_map_clear(SaveMap)
+//SaveNo = 0
 

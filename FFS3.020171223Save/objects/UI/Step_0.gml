@@ -74,8 +74,7 @@ for (var i = 0; i < array_length_1d(TopButton); ++i) {
 	#endregion
 	#region 删除
 case "删除":
-//file_delete("临时保存.map")
-//game_restart()
+
 break;
 #endregion
 	#region 修改名称
@@ -157,6 +156,8 @@ for (var i = 0; i < array_length_1d(PenSelectButton); ++i) {
 
 		
 	#region 刷新按钮列表信息
+	var PenMap = variable_instance_get(id,"PenMap")
+var AllPenMap = variable_instance_get(id,"AllPenMap")
 	PenButton = 0
 var Str = PenSelect
 var Map= PenMap[?Str]
@@ -267,7 +268,7 @@ Objy = GameSufMy/GameSufH*camera_get_view_height(view_camera[0]) + camera_get_vi
 Objy = Objy div 32*32
  #endregion
 //var C= collision_point(Objx+16,Objy+16,oObject,0,1)
-	#region 摆放物体
+#region 摆放物体
 	if mouse_check_button(mb_left)
 	{
 	var 	C = ds_grid_get(MapGrid, Objx div 32 ,Objy div 32)  
