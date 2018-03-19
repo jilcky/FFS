@@ -1,0 +1,13 @@
+Name,Var
+groundAccel,0.4
+groundFric,0.8
+airAccel,0.3
+airFric,0.8
+vxMax,2.7
+vyMax,7
+jumpHeight,4
+gravNorm,0.25
+gravSlide,0.25
+clingTime,2
+TowJumpON,1
+SlideJumpON,0
