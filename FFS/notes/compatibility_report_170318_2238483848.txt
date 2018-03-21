@@ -1,0 +1,278 @@
+Converting GML script: ${project_dir}\scripts\scr_player_step_on_ground\scr_player_step_on_ground.gml
+Converted description /// @description scr_player_step_on_ground()/// @function scr_player_step_on_ground
+
+Converting GML script: ${project_dir}\scripts\scr_player_step_in_air\scr_player_step_in_air.gml
+Converted description /// @description scr_player_step_in_air()/// @function scr_player_step_in_air
+
+Converting GML script: ${project_dir}\scripts\scr_player_step_on_wall\scr_player_step_on_wall.gml
+Converted description /// @description scr_player_step_on_wall()/// @function scr_player_step_on_wall
+
+Converting GML script: ${project_dir}\scripts\scr_get_keyboard_input\scr_get_keyboard_input.gml
+Converted description /// @description scr_get_keyboard_input()/// @function scr_get_keyboard_input
+Converted string - line 4: 'S' -> "S"
+Converted string - line 5: 'A' -> "A"
+Converted string - line 6: 'D' -> "D"
+Converted string - line 8: 'W' -> "W"
+Converted string - line 9: 'W' -> "W"
+
+Converting GML script: ${project_dir}\scripts\scr_get_gamepad_input\scr_get_gamepad_input.gml
+Converted description /// @description scr_get_gamepad_input(player_number)/// @function scr_get_gamepad_input
+/// @param player_number
+
+Converting GML script: ${project_dir}\scripts\scr_move_horizontal_collision\scr_move_horizontal_collision.gml
+Converted description /// @description scr_move_horizontal_collision(max_slope, min_slope)/// @function scr_move_horizontal_collision
+/// @param max_slope
+/// @param  min_slope
+
+Converting GML script: ${project_dir}\scripts\scr_move_vertical_collision\scr_move_vertical_collision.gml
+Converted description /// @description scr_move_horizontal_collision()/// @function scr_move_horizontal_collision
+
+Converting GML script: ${project_dir}\scripts\scr_on_ground\scr_on_ground.gml
+Converted description /// @description scr_on_ground()/// @function scr_on_ground
+
+Converting GML script: ${project_dir}\scripts\scr_get_angle_below_object\scr_get_angle_below_object.gml
+Converted description /// @description scr_get_angle_below_object(x_offset_left, x_offset_right, grav_direction, depth_below, collision)/// @function scr_get_angle_below_object
+/// @param x_offset_left
+/// @param  x_offset_right
+/// @param  grav_direction
+/// @param  depth_below
+/// @param  collision
+
+Converting GML script: ${project_dir}\scripts\scr_place_meeting_exception\scr_place_meeting_exception.gml
+Converted description /// @description scr_place_meeting_exception(x, y, obj_parent, object_to_ignore);/// @function scr_place_meeting_exception
+/// @param x
+/// @param  y
+/// @param  obj_parent
+/// @param  object_to_ignore
+
+Converting GML script: ${project_dir}\scripts\scr_draw_trail\scr_draw_trail.gml
+Converted description /// @description scr_draw_trail(length,width,color,sprite,slim,alpha,x,y)/// @function scr_draw_trail
+/// @param length
+/// @param width
+/// @param color
+/// @param sprite
+/// @param slim
+/// @param alpha
+/// @param x
+/// @param y
+
+Converting GML script: ${project_dir}\scripts\scr_draw_sprite_skew_ext\scr_draw_sprite_skew_ext.gml
+Converted description /// @description scr_draw_sprite_skew_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, image_angle, image_blend, image_alpha, image_xskew, image_yskew);/// @function scr_draw_sprite_skew_ext
+/// @param sprite_index
+/// @param  image_index
+/// @param  x
+/// @param  y
+/// @param  image_xscale
+/// @param  image_yscale
+/// @param  image_angle
+/// @param  image_blend
+/// @param  image_alpha
+/// @param  image_xskew
+/// @param  image_yskew
+
+Converting GML script: ${project_dir}\scripts\scr_draw_sprite_pos_color\scr_draw_sprite_pos_color.gml
+Converted description /// @description scr_draw_sprite_pos_color(sprite_index, image_index, x1, y1, x2, y2, x3, y3, x4, y4, image_blend, image_alpha);/// @function scr_draw_sprite_pos_color
+/// @param sprite_index
+/// @param  image_index
+/// @param  x1
+/// @param  y1
+/// @param  x2
+/// @param  y2
+/// @param  x3
+/// @param  y3
+/// @param  x4
+/// @param  y4
+/// @param  image_blend
+/// @param  image_alpha
+
+Converting GML script: ${project_dir}\scripts\scr_draw_sprite_scaled_rotated\scr_draw_sprite_scaled_rotated.gml
+Converted description /// @description scr_draw_sprite_scaled_rotated(sprite_index,image_index,x,y,scale_left,scale_right,scale_top,scale_bottom,image_angle,image_color,image_alpha)/// @function scr_draw_sprite_scaled_rotated
+/// @param sprite_index
+/// @param image_index
+/// @param x
+/// @param y
+/// @param scale_left
+/// @param scale_right
+/// @param scale_top
+/// @param scale_bottom
+/// @param image_angle
+/// @param image_color
+/// @param image_alpha
+
+Converting GML script: ${project_dir}\scripts\scr_draw_sprite_pos_transform_rotate\scr_draw_sprite_pos_transform_rotate.gml
+Converted description /// @description scr_draw_sprite_pos_transform_rotate(sprite_index,image_index,x1,y1,x2,y2,x3,y3,x4,y4,image_angle,image_color,image_alpha)/// @function scr_draw_sprite_pos_transform_rotate
+/// @param sprite_index
+/// @param image_index
+/// @param x1
+/// @param y1
+/// @param x2
+/// @param y2
+/// @param x3
+/// @param y3
+/// @param x4
+/// @param y4
+/// @param image_angle
+/// @param image_color
+/// @param image_alpha
+
+Converting GML script: ${project_dir}\scripts\scr_draw_scale_impulse\scr_draw_scale_impulse.gml
+Converted description /// @description scr_draw_scale_impulse(x_scale_left_impulse, x_scale_right_impulse, y_scale_top_impulse, y_scale_bottom_impulse)/// @function scr_draw_scale_impulse
+/// @param x_scale_left_impulse
+/// @param  x_scale_right_impulse
+/// @param  y_scale_top_impulse
+/// @param  y_scale_bottom_impulse
+
+Converting GML script: ${project_dir}\scripts\scr_draw_text_ext_transformed_shadow\scr_draw_text_ext_transformed_shadow.gml
+Converted description /// @description scr_draw_text_ext_transformed_shadow(x, y, string, sep, w, xscale, yscale, angle, shadow length, shadow direction, shadow color, shadow alpha);/// @function scr_draw_text_ext_transformed_shadow
+/// @param x
+/// @param  y
+/// @param  string
+/// @param  sep
+/// @param  w
+/// @param  xscale
+/// @param  yscale
+/// @param  angle
+/// @param  shadow length
+/// @param  shadow direction
+/// @param  shadow color
+/// @param  shadow alpha
+
+Converting GML script: ${project_dir}\scripts\scr_particles_create\scr_particles_create.gml
+Converted description /// @description scr_particles_create(direction,x,y,number_of_particles)/// @function scr_particles_create
+/// @param direction
+/// @param x
+/// @param y
+/// @param number_of_particles
+
+Converting GML script: ${project_dir}\scripts\scr_approach\scr_approach.gml
+Converted description /// @description scr_approach(current, target, amount)/// @function scr_approach
+/// @param current
+/// @param  target
+/// @param  amount
+
+Converting GML script: ${project_dir}\scripts\scr_angle_approach\scr_angle_approach.gml
+Converted description /// @description scr_angle_approach(current, target, turn_speed)/// @function scr_angle_approach
+/// @param current
+/// @param  target
+/// @param  turn_speed
+
+Converting GML script: ${project_dir}\scripts\scr_ease_out_elastic\scr_ease_out_elastic.gml
+Converted description /// @description scr_ease_out_elastic(time, start, change, duration)/// @function scr_ease_out_elastic
+/// @param time
+/// @param  start
+/// @param  change
+/// @param  duration
+
+Converting GML script: ${project_dir}\scripts\scr_collision_line_first\scr_collision_line_first.gml
+Converted description /// @description scr_collision_line_first(x1,y1,x2,y2,object,prec,notme)/// @function scr_collision_line_first
+/// @param x1
+/// @param y1
+/// @param x2
+/// @param y2
+/// @param object
+/// @param prec
+/// @param notme
+
+!!! Font font_V5_Prophit uses a font (V5 Prophit) not installed on this system - Font has NOT been regenerated
+Converting GML script: ${project_dir}\objects\obj_player\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_player\Step_2.gml
+Converted description /// @description Procedual Animation
+
+Converting GML script: ${project_dir}\objects\obj_player\Step_0.gml
+Converted description /// @description Finite State Machine
+
+Converting GML script: ${project_dir}\objects\obj_player\Collision_9fe9a0a8-5e4b-47f2-b7b9-791056aedb37.gml
+Converted description /// @description touch the grass
+
+Converting GML script: ${project_dir}\objects\obj_player\Draw_0.gml
+Converted description /// @description Draw
+
+Converting GML script: ${project_dir}\objects\obj_controller_background\Create_0.gml
+Converted builtin - line 14: background_x[i] += irandom(999 -> __background_set( e__BG.X, i, __background_get( e__BG.X, i ) + (irandom(999) )
+Converted builtin - line 13: background_y[i] = room_height - background_height[i] -> __background_set( e__BG.Y, i, room_height - background_height[i] )
+Converted builtin - line 15: background_blend[i] = merge_color(c_white, bg_color, 1/background_number*i -> __background_set( e__BG.Blend, i, merge_color(c_white, bg_color, 1/background_number*i )
+Converted builtin - line 9: background_colour = bg_color -> __background_set_colour( bg_color )
+Converted builtin - line 8: background_showcolour = true -> __background_set_showcolour( true )
+Converted description /// @description Set up Backgrounds 
+Converted builtin - line 13: background_height[i] -> __background_get( e__BG.Height, i )
+
+Converting GML script: ${project_dir}\objects\obj_controller_music\Other_5.gml
+Converted description /// @description stop music
+
+Converting GML script: ${project_dir}\objects\obj_controller_music\Other_4.gml
+Converted description /// @description play music
+
+Converting GML script: ${project_dir}\objects\obj_controller_description\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_controller_description\Step_0.gml
+Converted description /// @description  Movement of the HUD
+
+Converting GML script: ${project_dir}\objects\obj_controller_description\Draw_64.gml
+Converted description /// @description Draw
+
+Converting GML script: ${project_dir}\objects\obj_platform_moving_horizontal\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_platform_moving_horizontal\Step_2.gml
+Converted description /// @description movement
+
+Converting GML script: ${project_dir}\objects\obj_platform_moving_vertical\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_platform_moving_vertical\Step_2.gml
+Converted description /// @description movement
+
+Converting GML script: ${project_dir}\objects\obj_fade_in\Draw_73.gml
+Converted builtin - line 4: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 4: view_xview[0] -> __view_get( e__VW.XView, 0 )
+Converted builtin - line 4: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 4: view_yview[0] -> __view_get( e__VW.YView, 0 )
+Converted builtin - line 4: view_wview[0] -> __view_get( e__VW.WView, 0 )
+Converted builtin - line 4: view_hview[0] -> __view_get( e__VW.HView, 0 )
+Converted description /// @description  Fade In from Black
+
+Converting GML script: ${project_dir}\objects\obj_grass\Create_0.gml
+Converted description /// @description  Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_grass\Step_2.gml
+Converted description /// @description  Wiggle back and forth
+
+Converting GML script: ${project_dir}\objects\obj_grass\Draw_0.gml
+Converted description /// @description  Draw
+
+Converting GML script: ${project_dir}\objects\obj_particle_player\Create_0.gml
+Converted description /// @description Initialize Variables
+
+Converting GML script: ${project_dir}\objects\obj_particle_player\Step_0.gml
+Converted description /// @description Animation
+
+Converting GML script: ${project_dir}\objects\obj_particle_player\Collision_3e0b2fd6-18e9-48d4-92c9-6dd8c807d269.gml
+Converted description /// @description touch the grass
+
+Missing audiogroup for sound: 'sfx_land' - setting to default audio group
+Missing audiogroup for sound: 'sfx_jump' - setting to default audio group
+Missing audiogroup for sound: 'sfx_walljump' - setting to default audio group
+Missing audiogroup for sound: 'sfx_gerudo' - setting to default audio group
+Added compatibility script 'action/action_end_game.gml'
+Added compatibility script 'action/action_restart_game.gml'
+Added compatibility script 'background/__background_get.gml'
+Added compatibility script 'background/__background_get_element.gml'
+Added compatibility script 'background/__background_get_internal.gml'
+Added compatibility script 'background/__background_set.gml'
+Added compatibility script 'background/__background_set_colour.gml'
+Added compatibility script 'background/__background_set_element.gml'
+Added compatibility script 'background/__background_set_internal.gml'
+Added compatibility script 'background/__background_set_showcolour.gml'
+Added compatibility script 'instance/instance_create.gml'
+Added compatibility script 'object/object_get_depth.gml'
+Added compatibility script 'texture/texture_set_repeat.gml'
+Added compatibility script 'view/__view_get.gml'
+Added compatibility script 'action/__init_action.gml'
+Added compatibility script 'background/__init_background.gml'
+Added compatibility script 'view/__init_view.gml'
+Added compatibility script '__init_global.gml'
+Added compatibility script 'background/__background_get_colour_element.gml'
+Added compatibility script '__global_object_depths.gml'
